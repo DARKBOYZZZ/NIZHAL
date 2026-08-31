@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const NizhalApp());
+void main() {
+  runApp(const NizhalApp());
+}
 
 class NizhalApp extends StatelessWidget {
   const NizhalApp({super.key});
@@ -37,24 +39,47 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 96, height: 96,
+                width: 96,
+                height: 96,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(28),
                   gradient: const LinearGradient(
-                    colors: [Color(0xFFB36BFF), Color(0xFF6D35C8)],
+                    colors: [
+                      Color(0xFFB36BFF),
+                      Color(0xFF6D35C8),
+                    ],
                   ),
                   boxShadow: const [
-                    BoxShadow(color: Color(0x559B5CFF), blurRadius: 30),
+                    BoxShadow(
+                      color: Color(0x559B5CFF),
+                      blurRadius: 30,
+                    ),
                   ],
                 ),
                 child: const Center(
-                  child: Text('N', style: TextStyle(fontSize: 64, fontWeight: FontWeight.w800)),
+                  child: Text(
+                    'N',
+                    style: TextStyle(
+                      fontSize: 64,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(height: 22),
-              const Text('NIZHAL', style: TextStyle(fontSize: 32, fontWeight: FontWeight.w800, letterSpacing: 3)),
+              const Text(
+                'NIZHAL',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 3,
+                ),
+              ),
               const SizedBox(height: 8),
-              const Text('Private. Personal. Yours.', style: TextStyle(color: Colors.white70)),
+              const Text(
+                'Private. Personal. Yours.',
+                style: TextStyle(color: Colors.white70),
+              ),
               const SizedBox(height: 45),
               TextField(
                 decoration: InputDecoration(
@@ -62,7 +87,10 @@ class LoginPage extends StatelessWidget {
                   prefixIcon: const Icon(Icons.person_outline),
                   filled: true,
                   fillColor: const Color(0xFF171A26),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(18), borderSide: BorderSide.none),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(18),
+                    borderSide: BorderSide.none,
+                  ),
                 ),
               ),
               const SizedBox(height: 14),
@@ -73,21 +101,39 @@ class LoginPage extends StatelessWidget {
                   prefixIcon: const Icon(Icons.lock_outline),
                   filled: true,
                   fillColor: const Color(0xFF171A26),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(18), borderSide: BorderSide.none),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(18),
+                    borderSide: BorderSide.none,
+                  ),
                 ),
               ),
               const SizedBox(height: 22),
               SizedBox(
-                width: double.infinity, height: 54,
+                width: double.infinity,
+                height: 54,
                 child: FilledButton(
-                  onPressed: () => Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (_) => const ChatPage()),
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const ChatPage(),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    'Login',
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
-                  child: const Text('Login', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700)),
                 ),
               ),
               const SizedBox(height: 20),
-              const Text('🔒 Your private space', style: TextStyle(color: Colors.white54)),
+              const Text(
+                '🔒 Your private space',
+                style: TextStyle(color: Colors.white54),
+              ),
             ],
           ),
         ),
@@ -103,7 +149,10 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('NIZHAL', style: TextStyle(fontWeight: FontWeight.w800)),
+        title: const Text(
+          'NIZHAL',
+          style: TextStyle(fontWeight: FontWeight.w800),
+        ),
         actions: const [
           Icon(Icons.call_outlined),
           SizedBox(width: 18),
@@ -113,15 +162,26 @@ class ChatPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          ListTile(
-            leading: const CircleAvatar(child: Icon(Icons.person)),
-            title: const Text('My Kochu ❤️', style: TextStyle(fontWeight: FontWeight.w700)),
-            subtitle: const Text('Online', style: TextStyle(color: Colors.greenAccent)),
+          const ListTile(
+            leading: CircleAvatar(
+              child: Icon(Icons.person),
+            ),
+            title: Text(
+              'My Kochu ❤️',
+              style: TextStyle(fontWeight: FontWeight.w700),
+            ),
+            subtitle: Text(
+              'Online',
+              style: TextStyle(color: Colors.greenAccent),
+            ),
           ),
           const Divider(height: 1),
           const Expanded(
             child: Center(
-              child: Text('Your private chat starts here 💜', style: TextStyle(color: Colors.white70)),
+              child: Text(
+                'Your private chat starts here 💜',
+                style: TextStyle(color: Colors.white70),
+              ),
             ),
           ),
           Padding(
@@ -157,10 +217,22 @@ class ChatPage extends StatelessWidget {
       bottomNavigationBar: NavigationBar(
         selectedIndex: 0,
         destinations: const [
-          NavigationDestination(icon: Icon(Icons.chat_bubble_outline), label: 'Chats'),
-          NavigationDestination(icon: Icon(Icons.call_outlined), label: 'Calls'),
-          NavigationDestination(icon: Icon(Icons.mic_none), label: 'Voice'),
-          NavigationDestination(icon: Icon(Icons.settings_outlined), label: 'Settings'),
+          NavigationDestination(
+            icon: Icon(Icons.chat_bubble_outline),
+            label: 'Chats',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.call_outlined),
+            label: 'Calls',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.mic_none),
+            label: 'Voice',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.settings_outlined),
+            label: 'Settings',
+          ),
         ],
       ),
     );
