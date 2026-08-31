@@ -16,7 +16,10 @@ class NizhalApp extends StatelessWidget {
         brightness: Brightness.dark,
         scaffoldBackgroundColor: const Color(0xFF080A12),
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF9B5CFF),
+  seedColor: const Color(0xFF9B5CFF),
+  brightness: Brightness.dark,
+),
+),
           brightness: Brightness.dark,
         ),
         useMaterial3: true,
