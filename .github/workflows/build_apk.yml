@@ -1,29 +1,109 @@
-name: Build NIZHAL APK
+import 'package:flutter/material.dart';
 
-on:
-  workflow_dispatch:
+void main() {
+  runApp(const NizhalApp());
+}
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+class NizhalApp extends StatelessWidget {
+  const NizhalApp({super.key});
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'NIZHAL',
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF9B5CFF),
+          brightness: Brightness.dark,
+        ),
+        useMaterial3: true,
+      ),
+      home: const LoginPage(),
+    );
+  }
+}
 
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          channel: stable
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
-      - name: Get packages
-        run: flutter pub get
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
 
-      - name: Build APK
-        run: flutter build apk --release
+class _LoginPageState extends State<LoginPage> {
+  final phoneController = TextEditingController();
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: nizhal-release-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+  @override
+  void dispose() {
+    phoneController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(
+                Icons.chat_bubble_rounded,
+                size: 90,
+                color: Color(0xFF9B5CFF),
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                'NIZHAL',
+                style: TextStyle(
+                  fontSize: 36,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 4,
+                ),
+              ),
+              const SizedBox(height: 8),
+              const Text(
+                'Stay connected. Stay close.',
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 16,
+                ),
+              ),
+              const SizedBox(height: 50),
+              TextField(
+                controller: phoneController,
+                keyboardType: TextInputType.phone,
+                decoration: const InputDecoration(
+                  labelText: 'Phone number',
+                  prefixIcon: Icon(Icons.phone),
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 20),
+              SizedBox(
+                width: double.infinity,
+                height: 52,
+                child: FilledButton(
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('NIZHAL login coming soon...'),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    'Continue',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
